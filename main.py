@@ -1,5 +1,7 @@
 from manim import *
 import csv
+from pathlib import Path
+import shutil
 
 def convert(x, y):
     x1 = (x - 960) / 135
@@ -7,6 +9,9 @@ def convert(x, y):
     return [x1, y1, 0]
 def abs_convert(x):
     return x / 135
+
+if Path('media').exists():
+    shutil.rmtree('media')
 
 with open('setlist.csv', 'r', encoding='utf-8') as file:
     data = list(csv.reader(file))
